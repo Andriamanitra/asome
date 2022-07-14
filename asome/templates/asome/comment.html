@@ -1,0 +1,13 @@
+{% load custom_tags %}
+
+<div class="comment">
+    <div class="comment-submitter">
+        {% user_link comment.submitter %}
+    </div>
+    <div class="comment-timestamp" title="{{ comment.date|date:'r' }}">
+        {{ comment.date | date }}
+    </div>
+    <div class="comment-content">
+        {{ comment.content }}
+    </div>
+</div>

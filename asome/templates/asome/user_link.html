@@ -1,0 +1,6 @@
+<div class="user-link">
+    <a href={% url 'asome:user' user.name %}>{{ user.name }}</a>
+    (<span title="likes">{{ user.likes.all|length }}</span> -
+    <span title="dislikes">{{ user.dislikes.all|length }}</span> -
+    <span title="comments">{{ user.comments.all|length }}</span>)
+</div>

@@ -1,1 +1,19 @@
-welcome
+{% extends 'asome/base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+<h2>Topics</h2>
+<div class="front-page-topics">
+{% for topic in topics %}
+    {% topic_link topic %}
+{% endfor %}
+</div>
+
+
+<h2>Recently joined</h2>
+<div class="recently-joined">
+    {% for user in recently_joined_users %}
+        {% user_link user %}
+    {% endfor %}
+</div>
+{% endblock %}

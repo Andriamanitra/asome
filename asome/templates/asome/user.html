@@ -1,0 +1,28 @@
+{% extends 'asome/base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+<h2 class="user-title">{{ user.name }}</h2>
+
+<h3>Likes</h3>
+{% for like in user.likes.all %}
+<div class="like">
+    {% topic_link like %}
+</div>
+{% empty %}
+<p>
+    {{ user.name }} does not like anything
+</p>
+{% endfor %}
+
+<h3>Dislikes</h3>
+{% for dislike in user.dislikes.all %}
+<div class="dislike">
+    {% topic_link dislike %}
+</div>
+{% empty %}
+<p>
+    {{ user.name }} has no dislikes yet
+</p>
+{% endfor %}
+{% endblock %}

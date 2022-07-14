@@ -1,0 +1,16 @@
+{% extends 'asome/base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+<h2>{{ topic.name }}</h2>
+<span class="topic-likes">{{ topic.likes.all|length }}</span>
+<span class="topic-dislikes">{{ topic.dislikes.all|length }}</span>
+<span>Topic created on {{ topic.date|date:"F jS Y" }}</span>
+
+<h3>Comments</h3>
+{% for comment in topic.comments.all %}
+{% show_comment comment %}
+{% empty %}
+<p>No one cares about this topic enough to have commented on it!</p>
+{% endfor %}
+{% endblock %}
