@@ -1,0 +1,13 @@
+{% extends 'asome/base.html' %}
+
+{% block content %}
+<p>Welcome to asome, {{ user.name }}</p>
+<p>Your username shall be accessible with this secret code: {{ user.secret }}</p>
+<p>
+    note that this is not meant to be super secure, there are probably ways to hijack your username (and we encourage you to try too, hijacking accounts is commendable antisocial behaviour)
+</p>
+<script>
+    window.localStorage.setItem("username", "{{ user.name }}")
+    window.localStorage.setItem("secret", "{{ user.secret }}")
+</script>
+{% endblock %}

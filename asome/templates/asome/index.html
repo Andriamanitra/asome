@@ -2,11 +2,24 @@
 {% load custom_tags %}
 
 {% block content %}
+<h2>What is this?</h2>
+<ul>
+<li>There are no friendships. Treat everyone as you would your worst enemy.</li>
+<li>The concept revolves around <i>topics</i>, which you may comment on and like/dislike.</li>
+<li>You can't vote on comments, every comment is equal.</li>
+<li>To create an "account" you only need to provide a username. We don't want to store your email address (or any other personal data).</li>
+<li>There are no rules, but the admins are tyrants.</li>
+</ul>
+
 <h2>Topics</h2>
 <div class="front-page-topics">
 {% for topic in topics %}
     {% topic_link topic %}
 {% endfor %}
+<form method="POST" action={% url 'asome:add_topic' %}>
+    {% csrf_token %}
+    {{ topic_form }}
+</form>
 </div>
 
 

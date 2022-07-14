@@ -7,10 +7,31 @@
 <span class="topic-dislikes">{{ topic.dislikes.all|length }}</span>
 <span>Topic created on {{ topic.date|date:"F jS Y" }}</span>
 
+<form class="uform" method="POST" action={% url 'asome:like_topic' topic.name %}>
+    {% csrf_token %}
+    <button type="submit">Like</button>
+</form>
+<form class="uform" method="POST" action={% url 'asome:dislike_topic' topic.name %}>
+    {% csrf_token %}
+    <button type="submit">
+        Dislike
+    </button>
+</form>
+
 <h3>Comments</h3>
 {% for comment in topic.comments.all %}
 {% show_comment comment %}
 {% empty %}
 <p>No one cares about this topic enough to have commented on it!</p>
 {% endfor %}
+
+<form class="uform" method="POST" action={% url 'asome:post_comment' topic.name %}>
+    {% csrf_token %}
+    <label for="content">Leave a comment</label>
+    <div class="comment-textarea-container">
+    <textarea id="content" name="content" type="text"></textarea>
+    </div>
+    <button type="submit">Send</button>
+</form>
+
 {% endblock %}

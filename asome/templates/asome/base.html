@@ -1,12 +1,29 @@
+<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>asome</title>
 </head>
 <body>
 <header>
     <a href={% url 'asome:index' %} class="header-link">Home</a>
+    <a href={% url 'asome:register' %} class="header-link">Register</a>
 </header>
 {% block content %}
 {% endblock %}
+<script>
+function onFormData(event) {
+    const username = window.localStorage.getItem("username")
+    const secret = window.localStorage.getItem("secret")
+    if (username && secret) {
+        event.formData.append("username", username)
+        event.formData.append("secret", secret)
+    }
+}
+for (let uform of document.getElementsByClassName("uform")) {
+    uform.addEventListener("formdata", onFormData)
+}
+</script>
 </body>
 </html>
